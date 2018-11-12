@@ -1,0 +1,14 @@
+﻿  main.cpp
+  level.cpp
+c:\users\bounty\source\repos\project3\project3\level.cpp(24): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\bounty\source\repos\project3\project3\level.cpp(25): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\bounty\source\repos\project3\project3\level.cpp(28): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+c:\users\bounty\source\repos\project3\project3\level.cpp(32): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+c:\users\bounty\source\repos\project3\project3\level.cpp(36): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+c:\users\bounty\source\repos\project3\project3\level.cpp(60): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\bounty\source\repos\project3\project3\level.cpp(61): warning C4018: '<' : incompatibilité signed/unsigned
+  player.cpp
+  Génération de code en cours
+  All 76 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Fin de la génération du code
+  Project3.vcxproj -> C:\Users\Bounty\source\repos\Project3\x64\Release\Project3.exe
