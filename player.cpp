@@ -7,7 +7,7 @@
 Player::Player(float x, float y) {
 	this->x = x;
 	this->y = y;
-	speed = 4;
+	speed = 0.05f;
 }
 
 void Player::draw(sf::RenderWindow * window, const EntityTextures * textures) {
@@ -19,17 +19,16 @@ void Player::draw(sf::RenderWindow * window, const EntityTextures * textures) {
 	window->draw(playerSprite);
 }
 
-void Player::move(float mx, float my, sf::Vector2u size, int * array) {
-	int posUL = ((int)(x + 0.1 + mx / 32 * speed)*size.y + (int)(y + 0.1 + my / 32 * speed));
-	int posUR = ((int)(x + 0.9 + mx / 32 * speed)*size.y + (int)(y + 0.1 + my / 32 * speed));
-	int posLL = ((int)(x + 0.1 + mx / 32 * speed)*size.y + (int)(y + 0.9 + my / 32 * speed));
-	int posLR = ((int)(x + 0.9 + mx / 32 * speed)*size.y + (int)(y + 0.9 + my / 32 * speed));
+void Player::move(float mx, float my, sf::Vector2u size, std::vector<Cell> array, float deltaTime, sf::View * view) {
+	int posUL = ((int)(x + 0.1 + mx / 32 * speed * deltaTime)*size.y + (int)(y + 0.1 + my / 32 * speed * deltaTime));
+	int posUR = ((int)(x + 0.9 + mx / 32 * speed * deltaTime)*size.y + (int)(y + 0.1 + my / 32 * speed * deltaTime));
+	int posLL = ((int)(x + 0.1 + mx / 32 * speed * deltaTime)*size.y + (int)(y + 0.9 + my / 32 * speed * deltaTime));
+	int posLR = ((int)(x + 0.9 + mx / 32 * speed * deltaTime)*size.y + (int)(y + 0.9 + my / 32 * speed * deltaTime));
 	
 
-
-
-	if (array[posUL] != 0 && array[posUR] != 0 && array[posLL] != 0 && array[posLR] != 0) {
+	if (array[posUL].path && array[posUR].path && array[posLL].path && array[posLR].path) {
 		y = y + my/32 * speed;
 		x = x + mx/32 * speed;
+		view->setCenter(x*32, y*32);
 	}
 }

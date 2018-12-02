@@ -5,21 +5,25 @@
 
 struct Textures {
 	sf::Texture iron_floor;
-	sf::Texture iron_wall;
 	sf::Texture iron_door_h;
+	std::vector<sf::Texture> iron_wall;
+};
+
+struct Cell {
+	int path;
+	int sprite;
 };
 
 
 class Level {
 private:
-	int * level_tab;
+	std::vector<Cell> level_tab;
 	sf::Vector2u level_size;
 public:
 	Level(const char* level_name);
-	~Level();
 	void draw(sf::RenderWindow * window, const Textures * textures);
 
-	int * getLevelArray();
+	std::vector<Cell> getLevelArray();
 	sf::Vector2u getLevelSize();
 };
 

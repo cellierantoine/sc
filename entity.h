@@ -19,8 +19,7 @@ public:
 	Player(float x, float y);
 	void draw(sf::RenderWindow * window, const EntityTextures * textures);
 
-	void move(float mx, float my, sf::Vector2u size, int * array);
-
+	void move(float mx, float my, sf::Vector2u size, std::vector<Cell> array, float deltaTime, sf::View * view);
 };
 
 #endif
