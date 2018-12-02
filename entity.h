@@ -4,8 +4,10 @@
 #include <SFML/Graphics.hpp>
 #include "level.h"
 
+
 struct EntityTextures {
 	sf::Texture player;
+	std::vector<sf::Texture> devices;
 };
 
 class Player {
@@ -19,7 +21,7 @@ public:
 	Player(float x, float y);
 	void draw(sf::RenderWindow * window, const EntityTextures * textures);
 
-	void move(float mx, float my, sf::Vector2u size, std::vector<Cell> array, float deltaTime, sf::View * view);
+	void move(float mx, float my, sf::Vector2u size, const std::vector<Cell> &array, float deltaTime, sf::View * view);
 };
 
 #endif

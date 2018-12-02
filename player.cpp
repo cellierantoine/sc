@@ -19,7 +19,7 @@ void Player::draw(sf::RenderWindow * window, const EntityTextures * textures) {
 	window->draw(playerSprite);
 }
 
-void Player::move(float mx, float my, sf::Vector2u size, std::vector<Cell> array, float deltaTime, sf::View * view) {
+void Player::move(float mx, float my, sf::Vector2u size, const std::vector<Cell> &array, float deltaTime, sf::View * view) {
 	int posUL = ((int)(x + 0.1 + mx / 32 * speed * deltaTime)*size.y + (int)(y + 0.1 + my / 32 * speed * deltaTime));
 	int posUR = ((int)(x + 0.9 + mx / 32 * speed * deltaTime)*size.y + (int)(y + 0.1 + my / 32 * speed * deltaTime));
 	int posLL = ((int)(x + 0.1 + mx / 32 * speed * deltaTime)*size.y + (int)(y + 0.9 + my / 32 * speed * deltaTime));

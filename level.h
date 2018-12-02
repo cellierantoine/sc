@@ -2,6 +2,7 @@
 #define LEVEL_H
 
 #include <SFML/Graphics.hpp>
+#include "device.h"
 
 struct Textures {
 	sf::Texture iron_floor;
@@ -12,6 +13,7 @@ struct Textures {
 struct Cell {
 	int path;
 	int sprite;
+	std::unique_ptr<Device> device;
 };
 
 
@@ -21,9 +23,9 @@ private:
 	sf::Vector2u level_size;
 public:
 	Level(const char* level_name);
-	void draw(sf::RenderWindow * window, const Textures * textures);
+	void draw(sf::RenderWindow * window, const Textures * textures, const EntityTextures * entityTextures);
 
-	std::vector<Cell> getLevelArray();
+	const std::vector<Cell> &getLevelArray() const;
 	sf::Vector2u getLevelSize();
 };
 

@@ -1,32 +1,37 @@
 #include <SFML/Graphics.hpp>
 #include "level.h"
 #include "entity.h"
+#include "device.h"
 #include <iostream>
 
 
 
 void loadTexture(Textures * textures, EntityTextures * entityTextures) {
-	std::string direction[] = { "E", "N", "S", "W", 
+	std::string direction[] = { "E", "N", "S", "W",
 								"EN", "ES", "EW", "NS", "NW", "SW",
-								"ENS", "ESW", "ENW", "NSW",
-								"ENSW"};
+								"ENS", "ENW", "ESW", "NSW",
+								"ENSW" };
 
 
 	textures->iron_floor.loadFromFile("assets/iron_floor.png");
 	textures->iron_door_h.loadFromFile("assets/iron_door_h.png");
 	textures->iron_wall.resize(sizeof(direction) / sizeof(direction[0]));
-	for (int i = 0; i < sizeof(direction)/sizeof(direction[0]); i++) {
+	for (int i = 0; i < sizeof(direction) / sizeof(direction[0]); i++) {
 		textures->iron_wall[i].loadFromFile("assets/walls/sc_wall_" + direction[i] + ".png");
 	}
 
+
 	entityTextures->player.loadFromFile("assets/player.png");
+
+	entityTextures->devices.resize(1);
+	entityTextures->devices[0].loadFromFile("assets/devices/farm.png");
 }
 
 int main()
 {
 	sf::Clock clock;
 
-	sf::RenderWindow window(sf::VideoMode(480, 640), "Test"/*, sf::Style::Fullscreen*/);
+	sf::RenderWindow window(sf::VideoMode(480, 640), "Test", sf::Style::Fullscreen);
 	window.setKeyRepeatEnabled(false);
 
 	Textures textures;
@@ -55,7 +60,7 @@ int main()
 		window.clear();
 
 		//Affichage du décor
-		level.draw(&window, &textures);
+		level.draw(&window, &textures, &entityTextures);
 		player.draw(&window, &entityTextures);
 
 		//Deplacement
