@@ -7,7 +7,7 @@
 Player::Player(float x, float y) {
 	this->x = x;
 	this->y = y;
-	speed = 0.05f;
+	speed = 64.0f;
 }
 
 void Player::draw(sf::RenderWindow * window, const EntityTextures * textures) {
@@ -27,8 +27,8 @@ void Player::move(float mx, float my, sf::Vector2u size, const std::vector<Cell>
 	
 
 	if (array[posUL].path && array[posUR].path && array[posLL].path && array[posLR].path) {
-		y = y + my/32 * speed;
-		x = x + mx/32 * speed;
+		y = y + my/32 * speed * deltaTime;
+		x = x + mx/32 * speed * deltaTime;
 		view->setCenter(x*32, y*32);
 	}
 }

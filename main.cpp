@@ -49,6 +49,7 @@ int main()
 	{
 		//Récuperation de la durée d'une frame
 		auto deltaTime = clock.getElapsedTime();
+		clock.restart();
 
 		sf::Event event;
 		while (window.pollEvent(event))
@@ -57,6 +58,7 @@ int main()
 				window.close();
 		}
 
+		
 		window.clear();
 
 		//Affichage du décor
